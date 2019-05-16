@@ -1,0 +1,51 @@
+/*
+
+Given a sorted array A, size N, of integers; every element appears twice except for one. Find that element in linear time complexity and 
+without using extra memory.
+
+Input:
+The first line of input consists of T, the number of the test cases. T testcases follow. Each testcase contains two lines of input.
+The first line of each test case contains the size of the array, and the second line has the elements of the array.
+
+Output:
+For each testcase, in a new line, print the number that appears only once in the array.
+
+Constraints:
+1 ≤ T ≤ 100
+1 ≤ N ≤ 107
+0 ≤ A[i] ≤ 1017
+
+Example:
+Input:
+1
+11
+1 1 2 2 3 3 4 50 50 65 65
+Output:
+4
+
+*/
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc= new Scanner(System.in);
+		int t = sc.nextInt();
+		while(t-- > 0)
+		{
+		    int n=sc.nextInt();
+		    int a[] = new int[n];
+		    int i,m;
+		    for(i=0;i<n;i++) a[i]=sc.nextInt();
+		    m=a[0];
+		    for(i=1;i<n;i++)
+		    {
+		     m=m^a[i];
+		    }
+		    System.out.println(m);
+		}
+	}
+}
