@@ -1,0 +1,18 @@
+//driver code only incase of 2 middle elements deletes the second one
+int len(Node *h)
+{
+    int c=0; while(h){c++; h=h->next; } return c;
+}
+
+Node* deleteMid(Node *head)
+{
+     Node *t=head;
+     int l=len(head);
+     int k = (l/2)-1;
+     while(k--)
+     {
+         t=t->next;
+     }
+     t->next=t->next->next;
+     return head;
+}
