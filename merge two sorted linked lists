@@ -1,0 +1,20 @@
+//driver code only
+
+struct node* mergeList(struct node* a, struct node* b)
+{
+    if(a==NULL) return b;
+    if(b==NULL) return a;
+    struct node *res;
+    if(a->data<b->data)
+    {
+        res=a;
+        res->next= mergeList(a->next,b);
+        return res;
+    }
+    else
+    {
+        res=b;
+        res->next= mergeList(a,b->next);
+        return res;
+    }
+}
