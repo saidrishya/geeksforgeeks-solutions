@@ -1,0 +1,22 @@
+void bfs(int s, vector<int> v[], bool vis[])
+{
+   queue<int> q;
+   q.push(s);
+   vis[s]=true;
+  while(!q.empty())
+  {
+      int p=q.front();
+      cout<<p<<" ";
+      q.pop();
+      for(int i=0; i<v[p].size(); i++)
+      {
+          if(vis[v[p][i]] == false)
+          {
+              q.push(v[p][i]);
+              vis[v[p][i]]=true;
+          }
+      }
+     
+  }
+    
+}
