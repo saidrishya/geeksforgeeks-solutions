@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+void swap(int *a, int *b )
+{
+int *t=a; *a=*b; *b=t;
+}
+
+void insert(int arr[], int i)
+{
+    int k=arr[i];
+    int j=i-1;
+    while(j>=0 && arr[j]>k)
+    {
+        arr[j+1]=arr[j];
+        j=j-1;
+    }
+    arr[j+1]=k;
+    
+}
+void insertionSort(int arr[], int n)
+{
+   int i;
+   for (i = 1; i < n; i++)
+      insert(arr, i);
+}
+
+int main()
+{
+int a[5] = {4,7,1,6,2};
+int n=sizeof(a[0])/sizeof(int);
+insertionSort(a,n);
+for(int i=0;i<n;i++) cout<<a[i]<<" ";
+}
