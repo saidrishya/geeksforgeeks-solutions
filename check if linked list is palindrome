@@ -1,0 +1,18 @@
+#include <stack>
+bool isPalindrome(Node *head)
+{
+    Node *t=head, *t1=head;
+    stack<int> s;
+    while(t)
+    {
+        s.push(t->data);
+        t=t->next;
+    }
+    while(t1)
+    {
+        if(t1->data == s.top()) s.pop();
+        t1=t1->next;
+    }
+if(!s.empty()) return false;
+else return true;
+}
