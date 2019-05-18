@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+void swap(int *a, int *b )
+{
+int *t=a; *a=*b; *b=t;
+}
+
+int select(int a[], int i)
+{
+    int x=i;
+   for(int j=i-1; j>=0; j--)
+   {
+       if(a[j] > a[x]) x=j;
+   }
+   return x;
+}
+void selectionSort(int arr[], int n) {
+   int i, j;
+   for (i = n-1; i >=0; i--)     {
+        int j = select(arr, i);
+        swap(&arr[i], &arr[j]);
+   }
+}  
+
+int main()
+{
+int a[5] = {4,7,1,6,2};
+int n=sizeof(a[0])/sizeof(int);
+selectionSort(a,n);
+for(int i=0;i<n;i++) cout<<a[i]<<" ";
+}
