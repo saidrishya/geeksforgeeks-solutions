@@ -1,0 +1,58 @@
+?*
+Given an array of n numbers and a positive integer k. The problem is to find k numbers with most occurrences, i.e., 
+the top k numbers having the maximum frequency. If two numbers have same frequency then the larger number should be given preference.
+The numbers should be displayed in decreasing order of their frequencies. It is assumed that the array consists of k numbers with most 
+occurrences.
+
+Examples:
+
+Input : arr[] = {3, 1, 4, 4, 5, 2, 6, 1}, 
+             k = 2
+Output : 4 1
+Frequency of 4 = 2
+Frequency of 1 = 2
+These two have the maximum frequency and
+4 is larger than 1.
+
+Input : arr[] = {7, 10, 11, 5, 2, 5, 5, 7, 11, 8, 9},
+            k = 4
+Output : 5 11 7 10
+
+*/
+#include <bits/stdc++.h>
+using namespace std;
+
+bool compare(pair<int,int> p1,pair<int,int> p2 )
+{
+    if(p1.second == p2.second)
+     return p1.first>p2.first;
+    else return p1.second>p2.second;
+}
+
+
+void mostfreq(int a[], int n, int k)
+{
+    unordered_map<int,int> h;
+    for(int i=0; i<n; i++)
+    {
+        h[a[i]]++;
+    }
+    vector<pair<int ,int>> v(h.begin(), h.end());
+    
+    sort(v.begin(), v.end(), compare);
+    
+    for(int i=0; i<k;i++) cout<<v[i].first<<" ";
+}
+
+int main()
+{
+    int n,k; cin>>n>>k;
+    int a[n];
+    for(int i=0;i<n;i++)
+     {
+         cin>>a[i];
+     }
+    mostfreq(a,n,k);
+
+    return 0;
+}
