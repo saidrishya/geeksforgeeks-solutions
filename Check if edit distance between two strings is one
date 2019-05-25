@@ -1,0 +1,53 @@
+/*
+
+An edit between two strings is one of the following changes.
+
+Add a character
+Delete a character
+Change a character
+Given two string s1 and s2, find if s1 can be converted to s2 with exactly one edit. Expected time complexity is O(m+n) where m and n are 
+lengths of two strings.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool utility(string s1, string s2)
+{
+    int m=s1.size(), n=s2.size(),i=0,j=0,c=0;
+    if(abs(m-n) > 1) return false;
+    while(i<m && j<n)
+    {
+        //if(c==1) return false;
+        if(s1[i] != s2[j])
+        {
+            if(m<n) i++;
+            else if(n<m) j++;
+            else
+            {
+                i++;
+                j++;
+            }
+            c++;
+        }
+        else
+        {
+            i++;
+            j++;
+        }
+        
+    }
+     if (i < m || j < n) 
+        c++; 
+  
+    return c == 1; 
+    
+}
+
+int main()
+{
+   string s1,s2;
+    cin>>s1>>s2;
+    if(utility(s1,s2)) cout<<"Yes\n";
+    else cout<<"No\n";
+}
