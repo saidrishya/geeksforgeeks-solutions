@@ -1,0 +1,71 @@
+/*
+Pasha is a strange guy. He has a string of length N. He wants to perform 2 types of queries on the string.
+Type 1- Rotate the string by K character from the end.
+Type 2- Print the Character at the I'th index of the resulting string at that Instant.
+
+Now, Pasha wants to perform the 2 types of queries, But he is too lazy to do it himself.
+So, you need to help him.
+Input:
+The first line contains an integer T-denoting the test cases.
+The first line of each test cases contains two integers- N (Length of the string) and Q(Number of queries),
+The second line contains the String.
+Then Each of the next Q lines contains Typ of the query and K or I.
+Output:
+For each query of Type 2, Output the character at the I'th index in a new line.
+Constraints:
+1<=T<=10
+1<=N<=100000
+1<=Q<=10000
+1<=TYP<=2
+1<=K<=1000000000
+0<=I
+Example:
+Sample Input:
+1
+7 5
+abcdefg
+1 2
+2 0
+2 6
+1 4
+2 1
+
+Sample output:
+f
+e
+c
+Explanation:
+After First query String becomes -"fgabcde"
+Second query returns - 'f'
+Third query returns -'e'
+After Fourth Query String becomes- "bcdefga"
+Fifth Query returns -'c'
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t; cin>>t; while(t--)
+	{
+	    int n,q; cin>>n>>q;
+	    string s; cin>>s;
+	    long long offset=0;
+	    while(q--)
+	    {
+	       int a,b; cin>>a>>b;
+	       b=b%n;
+	       if(a==1)
+	       {
+	          offset=offset+(n-b);
+	       }
+	      else
+	       {
+	           //int b; cin>>b;
+	           cout<<s[(offset+b)%n]<<endl;
+	       }
+	       
+	    }
+	}
+	return 0;
+}
