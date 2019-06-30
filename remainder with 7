@@ -1,0 +1,33 @@
+/*
+Given a number as string(n) , your task is to complete the function remainderWith7 which returns an integer which denotes the remainder of the
+number when its divided by 7. 
+
+Input:
+The first line of input contains an integer T denoting the no of test cases then T test cases follow . Each test case contains a number
+represented as string.
+
+Output:
+For each test case in a new line print the remainder when the number is divided by 7.
+
+Constraints:
+1<=T<=100
+1<=length of n <=300
+
+Example(To be used only for expected output):
+Input:
+2
+5
+8
+Output:
+5
+1
+*/
+int remainderWith7(string n)
+{
+    long long int num=0;
+    for(int i=0; i<n.size(); i++){
+        num = num*10 + n[i]-'0';
+        num=num%7;
+    }
+return num;
+}
