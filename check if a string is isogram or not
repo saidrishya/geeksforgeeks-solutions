@@ -1,0 +1,52 @@
+/*
+Given a string S of lowercase aplhabets, check if it is isogram or not. An Isogram is a string in which no letter occurs more than once.
+
+Input:
+The first line of input contains an integer T denoting the number of test cases. T testcases follow. Each test case consist of one string in
+'lowercase' only, in a separate line.
+
+Output:
+For each testcase, in a new line, Print 1 if string is Isogram else print 0.
+
+Constraints:
+1 <= T <= 100
+1 <= |S| <= 103
+
+Example:
+Input:
+2
+machine
+geeks
+Output:
+1
+0
+
+Explanation:
+Testcase 2: geeks is not an isogram as 'e' appears twice. Hence we print 0.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool iso(string s){
+    map<char, int> m;
+    for(auto i: s){
+        m[i]++;
+    }
+    for(auto i:m){
+        if(i.second>1) return false;
+    }
+return true;
+}
+
+int main() {
+	int t; cin>>t;
+	while(t--){
+	    string s;
+	    cin>>s;
+	    if(iso(s)) cout<<1<<endl;
+	    else cout<<0<<endl;
+	    
+	}
+	return 0;
+}
