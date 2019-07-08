@@ -1,0 +1,68 @@
+/*
+Given an array arr[] of N numbers. The task is to print only those numbers whose digits are from set {1,2,3}.
+
+Input:
+The first line of input contains an integer T denoting the number of test cases. Then T test cases follow. Each test case consists of two lines. First line of each test case contains an integer N and the second line contains N space separated array elements.
+
+Output:
+For each test case, In new line print the required elements in increasing order. if there is no such element present in the array print "-1".
+
+Constraints:
+1 <= T <= 100
+1 <= N <= 106
+1 <= A[i] <= 106
+
+Example:
+Input:
+3
+3
+4 6 7
+4
+1 2 3 4
+5
+12 111 34 13 55
+
+Output:
+-1
+1 2 3
+12 13 111
+
+Explanation:
+Testcase 1: No elements are there in the array which contains digits 1, 2 or 3.
+
+Testcase 2: 1, 2 and 3 are the only elements in the array which conatins digits as 1, 2 or 3.
+ */
+ 
+ #include <bits/stdc++.h>
+using namespace std;
+
+bool digit(int n){
+    while(n>0){
+        int r=n%10;
+        if(r!=1 && r!=2 && r!=3) return false;
+        n/=10;
+    }
+return true;
+}
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int n; cin>>n;
+	    int a[n];
+	    vector<int> res;
+	    for(int i=0; i<n; i++) cin>>a[i]; 
+	    for(int i=0; i<n; i++){
+	       if(digit(a[i])==true)
+	       {
+	         res.push_back(a[i]);
+	       }
+	    }
+	    sort(res.begin(), res.end());
+	    if(res.size()==0) cout<<-1<<endl;
+	    else {
+	        for(int i=0; i<res.size(); i++) cout<<res[i]<<" ";
+	        cout<<endl;
+	    }
+	}
+	return 0;
+}
