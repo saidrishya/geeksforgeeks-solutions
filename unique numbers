@@ -1,0 +1,48 @@
+/*
+In given range, print all numbers having unique digits. e.g. In range 1 to 20 should print all numbers except 11.
+
+Input:
+First line consists of T test cases.
+The only line of every test case consists of two integers m and n separated by a space.
+
+Output:
+For each test case print all unique numbers separated by space.
+
+Constraints:
+1<=T<=100
+1<=m,n<1000
+
+Example:
+Input:
+1
+10 20
+Output:
+10 12 13 14 15 16 17 18 19 20
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isunique(int n){
+    int ar[11]={0};
+    while(n>0){
+        ar[n%10]++;
+        n/=10;
+    }
+    for(int i=0; i<=10; i++){
+        if(ar[i]>1) return false;
+    }
+return true;
+}
+
+int main(){
+    int t; cin>>t; while(t--){
+        int l,r;
+        cin>>l>>r;
+        for(int i=l; i<=r; i++){
+            if(isunique(i)) cout<<i<<" ";
+        }
+        cout<<endl;
+    }
+return 0;
+}
