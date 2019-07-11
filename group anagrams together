@@ -1,0 +1,55 @@
+/*
+Given an array of words, print the count of all anagrams together in sorted order (increasing order of counts).
+For example, if the given array is {“cat”, “dog”, “tac”, “god”, “act”}, then grouped anagrams are “(dog, god) (cat, tac, act)”. So the output
+will be 2 3.
+
+Input:
+First line consists of T test case. First line of every test case consists of N, denoting the number of words in array. Second line of every
+test case consists of words of array.
+
+Output:
+Single line output, print the counts of anagrams in increasing order.
+
+Constraints:
+1<=T<=100
+1<=N<=50
+
+Example:
+Input:
+2
+5
+act cat tac god dog
+3
+act cat tac
+Output:
+2 3
+3
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t; cin>>t;
+    while(t--){
+        int n; cin>>n;
+        vector<string> a;
+        vector<int> res;
+        unordered_map<string, int> m;
+        string s;
+        for(int i=0; i<n; i++){ cin>>s; a.push_back(s); }
+        for(int i=0; i<n; i++){
+            sort(a[i].begin(), a[i].end());
+        }
+        for(int i=0; i<n; i++){
+            m[a[i]]++;
+        }
+        for(auto i: m){
+            res.push_back(i.second);
+        }
+        for(auto i: res){
+            cout<<i<<" ";
+        }
+        cout<<"\n";
+    }
+}
