@@ -1,0 +1,39 @@
+/*
+Given a positive integer N, The task is to find if it is a power of eight or not.
+
+Input:
+The first line of input contains an integer T denoting the number of test cases. Then T test cases follow. Each test case contains an integer N.
+
+Output:
+In new line print "Yes" if it is a power of 8, else print "No".
+
+Constraints:
+1<=T<=100
+1<=N<=1018
+
+Example:
+Input:
+2
+64
+75
+Output:
+Yes
+N*/
+
+
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+int main() {
+	int t; cin>>t; while(t--){
+	    ll n,f=0; cin>>n;
+	    if(floor(log2(n)) == ceil(log2(n))){
+	    int k= log2(n);
+	    if(k%3 == 0)cout<<"Yes\n";
+	    else cout<<"No\n";
+	    }
+	    else cout<<"No\n";
+	}
+	return 0;
+}
