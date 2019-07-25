@@ -1,0 +1,50 @@
+/*
+Given a 32 bit number x, reverse its binary form and print the answer in decimal.
+
+Input:
+The first line of input consists T denoting the number of test cases. T testcases follow. Each test case contains a single 32 bit integer
+
+Output:
+For each test case, in a new line, print the reverse of integer.
+
+Constraints:
+1 <= T <= 100
+0 <= x <= 4294967295
+
+Example:
+Input:
+2
+1
+5
+Output:
+2147483648
+2684354560
+
+Explanation:
+Testcase1:
+00000000000000000000000000000001 =1
+10000000000000000000000000000000 =2147483648
+*/
+
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+int main() {
+	int t; cin>>t; while(t--){
+	    ll n; cin>>n;
+	    int count[32]={0},j=0;
+	    while(n>0){
+	        count[j] = (n&1);
+	        j++;
+	        n=n>>1;
+	    }
+	    ll ans=0,pos=1;
+	    for(int i=31; i>=0; i--){
+	        ans = ans + count[i]*pos;
+	        pos<<=1;
+	    }
+	    cout<<ans<<'\n';
+	}
+	return 0;
+}
