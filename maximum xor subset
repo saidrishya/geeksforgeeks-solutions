@@ -1,0 +1,58 @@
+/*
+Given a set A[ ] of positive integers. The task is to find the maximum XOR value of the elements from all the possible subsets.
+
+Input:
+The first line of input contains an integer T denoting the number of test cases. Then T test cases follow.
+The first line of each test case contains an integer N, where N is the size of the set A[ ]. The second line of each test case contains N 
+space separated integers, denoting elements of the set A[ ].
+
+Output
+Print out the maximum XOR subset value.
+
+Constraints
+1 <= T <= 100
+1 <= N <= 30
+0 <= A[i] < 1000
+
+Examples:
+Input:
+3
+3
+2 4 5 
+3
+33 73 64
+9
+5 633 64 43 131 51 87 999 23 
+
+Output:
+7
+104
+1023
+
+Explanation:
+Testcase 1: The maximum XOR value form possible subsets of the given array elements is : 7(2^5), where ^ is the symbol of XOR.
+*/
+
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int n; cin>>n;
+	    int a[n]; for(int i=0; i<n; i++) cin>>a[i];
+	    int max=a[0];
+	    for(int i=0;i<(1<<n);i++){
+	        int prod=1;
+	        for(int j=0;j<n;j++){
+	            if(i & (1<<j)){
+	                prod=prod^a[j];
+	            }
+	        }
+	        prod=prod^1;
+	        if(prod>max) max=prod;
+	    }
+	    cout<<max<<endl;
+	}
+	return 0;
+}
