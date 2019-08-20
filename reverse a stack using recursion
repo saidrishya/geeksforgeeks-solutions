@@ -1,0 +1,53 @@
+/*
+given a stack reverse it without using any extra space
+time complexity O(n^2)
+*/
+
+
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void insertAtBottom(stack<int> &s, int data){
+    int t;
+    if(s.empty()){
+        s.push(data);
+        return;
+    }
+    t=s.top();
+    s.pop();
+    insertAtBottom(s,data);
+    s.push(t);
+}
+
+
+
+void reverse(stack<int> &s){
+    int data;
+    if(s.empty()) return;
+    data=s.top();
+    s.pop();
+    reverse(s);
+    insertAtBottom(s,data);
+}
+
+
+
+
+
+int main()
+{
+    stack<int> s;
+    s.push(4);
+    s.push(3);
+    s.push(2);
+    s.push(1);
+    
+    reverse(s);
+    while(!s.empty()) {
+        cout<<s.top()<<" ";
+        s.pop();
+    }
+    return 0;
+}
