@@ -1,0 +1,63 @@
+/*
+Given a linked list of size N and a key. The task is to insert the key in the middle of the linked list.
+
+Input Format:
+First line of input contains number of testcases T. For each testcase, first line contains length of linked list N and next line contains
+N elements to be inserted into the linked list and the last line contains the element to be inserted to the middle.
+
+Output Format:
+For each testcase, there will be a single line of output containing the element of modified linked list.
+
+User Task:
+The task is to complete the function insertInMiddle() which takes head reference and element to be inserted as the arguments. The printing
+is done automatically by the driver code.
+
+Constraints:
+1 <= T <= 100
+1 <= N <= 103
+
+Example:
+Input:
+2
+3
+1 2 4
+3
+4
+10 20 40 50
+30
+
+Output:
+1 2 3 4
+10 20 30 40 50
+
+Explanation:
+Testcase 1: The new element is inserted after the current middle element in the linked list.
+*/
+
+Node *getmid(Node *h){
+    Node *p1,*p2;
+    p1=p2=h;
+    int i=0;
+    while(p1->next!= NULL){
+        if(i==0){
+            p1=p1->next;
+            i=1;
+        }
+        else if(i==1){
+            p1=p1->next;
+            p2=p2->next;
+            i=0;
+        }
+    }
+return p2;
+}
+Node* insertInMiddle(Node* head, int x)
+{
+  Node *temp= new Node(x);
+  Node *t=getmid(head);
+  Node *t1=t->next;
+  t->next=temp;
+  temp->next=t1;
+ return head;
+}
+ 
