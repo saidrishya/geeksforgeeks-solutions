@@ -1,0 +1,47 @@
+/*
+Given a single linked list of size M, your task is to complete the function sumOfLastN_Nodes(), which should return the sum of last N nodes
+of the linked list.
+
+Input:
+The function takes two arguments as input, the reference pointer to the head of the linked list and the an integer N.
+There will be T test cases and for each test case the function will be called seperately.
+
+Output:
+For each test case output the sum of last N nodes of the linked list.
+
+Constraints:
+1<=T<=100
+1<=N<=M<=1000
+
+Example:
+Input:
+2
+6 3
+5 9 6 3 4 10
+2 2
+1 2
+Output:
+17
+3
+*/
+
+int sumOfLastN_Nodes(struct Node* head, int n)
+{
+   struct Node *temp=head, *t=head , *t2;
+   int count=0,sum=0;
+   while(temp){
+       count++;
+       temp=temp->next;
+   }
+   int var=count-n ,i=0;
+   while(i!=var){
+       t=t->next;
+       i++;
+   }
+   t2=t;
+   while(t2){
+       sum = sum + (t2->data);
+       t2=t2->next;
+   }
+  return sum;
+}
