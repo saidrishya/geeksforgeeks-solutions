@@ -1,0 +1,57 @@
+/*
+Given an array of n elements in the following format { a1, a2, a3, a4, ….., an/2, b1, b2, b3, b4, …., bn/2 }. The task is shuffle the array
+to {a1, b1, a2, b2, a3, b3, ……, an/2, bn/2 } without using extra space.
+
+Input:
+The first line of input contains an integer T denoting the number of test cases. Then T test cases follow, Each test case contains an 
+integer n denoting the size of the array. The next line contains n space separated integers forming the array.
+
+Output:
+Print the shuffled array without using extra space.
+
+Constraints:
+1<=T<=10^5
+1<=n<=10^5
+1<=a[i]<=10^5
+
+Example:
+Input:
+2
+4
+1 2 9 15
+6
+1 2 3 4 5 6
+
+Output:
+1 9 2 15 
+1 4 2 5 3 6
+*/
+
+#include <bits/stdc++.h>
+#define f for(int i=0; i<n; i++)
+using namespace std;
+
+void rightRotate(int a[] , int i, int j){
+    int t=a[j];
+    for(int k=j; k>i; k--)
+      a[k]=a[k-1];
+    a[i]=t;
+}
+
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int n,i,j; cin>>n;
+	    int a[n]; f cin>>a[i];
+	    i=1;
+	    j=n/2;
+	    while(j<n){
+	        rightRotate(a,i,j);
+	        j++;
+	        i+=2;
+	    }
+	    f cout<<a[i]<<" ";
+	    cout<<'\n';
+	}
+	return 0;
+}
