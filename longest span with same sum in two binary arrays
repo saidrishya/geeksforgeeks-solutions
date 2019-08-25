@@ -1,0 +1,60 @@
+/*
+Given two binary arrays arr1[] and arr2[] of same size n. Find length of the longest common span (i, j) where j >= i such that arr1[i] + 
+arr1[i+1] + …. + arr1[j] = arr2[i] + arr2[i+1] + …. + arr2[j]. Elements are only 0 or 1.
+
+Input:
+The first line contains an integer 'T' denoting the total number of test cases. In each test cases, the first line contains an integer 'N'
+denoting the size of array. The second line contains N space-separated integers A1, A2, ..., AN denoting the elements of the array. The
+third line contains N space-separated integers B1, B2, ..., BN denoting the elements of the array.
+
+
+Output:
+In each seperated line output the maximum span with same sum.
+
+
+Constraints:
+1<=T<=31
+1<=N<=100
+
+
+Example:
+Input:
+1
+6
+0 1 0 0 0 0
+1 0 1 0 0 1
+
+Output:
+4
+*/
+
+#include <bits/stdc++.h>
+#define f for(int i=0; i<n; i++)
+using namespace std;
+
+int maxLen(int c[], int n){
+    int res=0;
+    f{
+        int curr=0;
+        for(int j=i; j<n; j++){
+            curr+=c[j];
+            if(curr==0)
+              res = max(res, j-i+1);
+        }
+    }
+return res;
+}
+
+
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int n; cin>>n;
+	    int a[n], b[n], c[n]; 
+	    f cin>>a[i];
+	    f cin>>b[i];
+	    f c[i]=a[i]-b[i];
+	    cout<<maxLen(c,n)<<'\n';
+	}
+	return 0;
+}
