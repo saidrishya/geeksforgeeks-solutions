@@ -1,0 +1,71 @@
+/*
+The task is to find the smallest number with given sum of digits as s and number of digits as d.
+
+Expected Time Complexity: O(d)
+
+Input:
+The first line of input contains a single integer T denoting the number of test cases. Then T test cases follow. Each test case consist of
+a single line containing two space separated integers s and d, where s is digit sum and d is number of digits.
+
+Output:
+Corresponding to each test case, in a new line, print the smallest number if possible, else print -1.
+
+Constraints:
+1 ≤ T ≤ 100
+1 ≤ s ≤ 100
+1 ≤ d ≤ 6
+
+Example:
+Input
+3
+9 2
+20 3
+63 3
+
+Output
+18
+299
+-1
+*/
+
+#include <bits/stdc++.h>
+#define ll long long int
+#define f for(int i=0; i<n; i++)
+using namespace std;
+static int position =1;
+
+int func(int sum,int d){
+    position*=10;
+    int pos=position/10;
+    if(d==1){
+        return sum*pos;
+    }
+    if(sum==1){
+        return (int)pow(10,(d-1))*pos;
+    }
+    else if(sum>9 ){
+        return func(sum-9,d-1)+9*pos;
+    }
+    else {
+        return func(1,d-1)+(sum-1)*pos;
+    }
+}
+
+
+int solve(int s, int d){
+    if(d*9<s) return -1;
+    position=1;
+    return func(s,d);
+}
+
+
+
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int s,d; cin>>s>>d;
+	    cout<<solve(s,d);
+	    cout<<'\n';
+	}
+	return 0;
+}
