@@ -1,0 +1,80 @@
+/*
+Given a Binary Tree of size N, your task is to complete the function printPaths() that prints all the possible paths from root node to the 
+all the leaf node's of the binary tree.
+
+       1
+    /     \
+   2       3
+  /  \    / \
+ 4    5  6   7
+All possible paths:
+1->2->4
+1->2->5
+1->3->6
+1->3->7
+
+Input:
+The function takes a single argument as input, the reference pointer to the root of the binary tree. There will be multiple test cases (T) 
+and for each test case the function will be called seperately.
+
+Output:
+The function should print all possible paths from root node to leaf node. The paths should start from root to leftmost leaf node and then 
+should move towards right of the tree. After every path append a '#' symbol to the path. 
+
+Constraints:
+1<=T<=100
+1<=N<=100
+
+Example:
+Input:
+2
+2
+1 2 R 1 3 L
+4
+10 20 L 10 30 R 20 40 L 20 60 R
+
+Output:
+1 3 #1 2 #
+10 20 40 #10 20 60 #10 30 #
+*/
+
+/*void printArray(int a[], int len){
+    for(int i=0; i<len; i++)
+      cout<<a[i]<<" ";
+    cout<<'#';
+}//print root to leaf
+
+void printRecurr(Node *root, int path[], int pathLen){
+    if(root==NULL) return;
+    path[pathLen]=root->data;
+    pathLen++;
+    if(root->left==NULL && root->right==NULL)
+       printArray(path,pathLen);
+    else{
+        printRecurr(root->left,path,pathLen);
+         printRecurr(root->right,path,pathLen);
+    }
+}*/
+
+void printRecurr(Node *root, string path){
+    if(root==NULL) return;
+    if(root->left==NULL && root->right==NULL){
+        cout<<path + to_string(root->data) + " #";
+    }
+    else
+    {
+        path = path + to_string(root->data) + " ";
+        if(root->left)
+           printRecurr(root->left,path);
+        if(root->right)
+           printRecurr(root->right,path);
+    }
+}
+
+void printPaths(Node* root)
+{
+    //int a[100];
+    string path="";
+    printRecurr(root,path);
+    cout<<'\n';
+}
