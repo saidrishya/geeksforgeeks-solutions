@@ -1,0 +1,77 @@
+/*
+Given a Binary Tree, your task is to print its level order traversal such that each level is separated by $.
+For the below tree the output will be 1 $ 2 3 $ 4 5 6 7 $ 8 $.
+
+          1
+       /     \
+     2        3
+   /    \     /   \
+  4     5   6    7
+    \
+     8
+
+Input Format:
+The first line of input contains T denoting the number of testcases. T testcases follow. Each testcase contains two lines of input. The 
+first line of input contains number of edges. The second line contains relation between nodes.
+
+Output Format:
+For each testcase, in a new line, print the output in required format.
+
+Your Task:
+This is a function problem. You don't need to read input. Just complete the function levelOrder() that takes nodes as parameter and
+prints level order line-by-line. The newline is automatically appended by the driver code.
+
+Constraints:
+1 <= T<= 100
+1 <= Number of edges <= 1000
+1 <= Data of a node <= 100
+
+Example:
+Input:
+2
+2
+1 2 R 1 3 L
+4
+10 20 L 10 30 R 20 40 L 20 60 R
+
+Output:
+1 $ 3 2  $
+10 $ 20 30 $ 40 60 $
+
+Explanation:
+Testcase1: The tree is
+        1
+     /      \
+   3       2
+So, the level order would be 1 $ 3 2 $
+Testcase2: The tree is
+                           10
+                        /        \
+                     20         30
+                  /       \
+               40       60
+So, the level order would be 10 $ 20 30 $ 40 60 $
+*/
+
+void levelOrder(Node* node)
+{
+  queue<Node*> q;
+  if(!node) return;
+  q.push(node);
+  int level=0;
+  while(!q.empty()){
+     if(level == 0){
+         level=q.size();
+     }
+     Node *t= q.front();
+     if(t->left) 
+        q.push(t->left);
+     if(t->right)
+        q.push(t->right);
+     cout<<t->data<<" ";
+     q.pop();
+     level--;
+     if(level==0) cout<<'$'<<" ";
+     
+  }
+}
