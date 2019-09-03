@@ -1,0 +1,85 @@
+/*
+Given a binary tree, find if it is height balanced or not. 
+A tree is height balanced if difference between heights of left and right subtrees is not more than one for all nodes of tree. 
+
+A height balanced tree
+        1
+     /     \
+   10      39
+  /
+5
+
+An unbalanced tree
+        1
+     /    
+   10   
+  /
+5
+
+Input Format:
+The input contains T, denoting number of testcases. For each testcase there will be two lines. The first line contains number of edges.
+The second line contains two nodes and a character separated by space. The first node denotes data value, second node denotes where it 
+will be assigned to the previous node which will depend on character 'L' or 'R' i.e. the 2nd node will be assigned as left child to the
+1st node if character is 'L' and so on. The first node of second line is root node. The struct or class Node has a data part which stores
+the data, pointer to left child and pointer to right child. There are multiple test cases. For each test case, the function will be
+called individually.
+
+Output Format:
+For each testcase, in a new line, print 0 or 1 accordingly.
+
+Your Task:
+You don't need to take input. Just complete the function isBalanced() that takes root node as parameter and returns true, if the tree is
+balanced else returns false.
+
+Constraints:
+1 <= T <= 100
+1 <= Number of nodes <= 100
+0 <= Data of a node <= 1000
+
+Example:
+Input:
+2
+2
+1 2 L 2 3 R
+4
+10 20 L 10 30 R 20 40 L 20 60 R
+
+Output:
+0
+1
+Explanation:
+Testcase1: The tree is
+        1
+     /    
+   2
+      \
+       3 
+The max difference in height of left subtree and right subtree is 2, which is greater than 1. Hence unbalanced.
+Testcase2: The tree is
+                           10
+                        /        \
+                     20         30
+                  /       \
+               40       60
+The max difference in height of left subtree and right subtree is 1. Hence unbalanced.
+*/
+
+int height(Node *root){
+    if(root==NULL) return 0;
+ else
+ {   int l=height(root->left);
+    int r=height(root->right);
+    if(l>r) return l+1;
+    else return r+1;
+}
+}
+
+bool isBalanced(Node *root)
+{
+    if(root==NULL) return true;
+    int l=height(root->left);
+    int r=height(root->right);
+    int k=abs(l-r);
+    if(k<=1 && isBalanced(root->left) && isBalanced(root->right)) return true;
+    else return false;
+}
