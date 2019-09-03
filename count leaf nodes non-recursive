@@ -1,0 +1,17 @@
+int countLeaves(Node* root)
+{
+  int c=0;
+  queue<Node *> q;
+  q.push(root);
+  while(!q.empty()){
+      Node *t=q.front();
+      q.pop();
+      if(t->left==NULL && t->right==NULL) c++;
+      else
+      {
+          if(t->left) q.push(t->left);
+          if(t->right) q.push(t->right);
+      }
+  }
+ return c;
+}
