@@ -1,0 +1,18 @@
+int height(Node* node)
+{
+ queue<Node *> q;
+ int size=0,h=0;
+ q.push(node);
+ while(!q.empty()){
+     size=q.size();
+     while(size){
+         Node *t= q.front();
+         q.pop();
+         if(t->left) q.push(t->left);
+         if(t->right) q.push(t->right);
+         size--;
+     }
+     h++;
+ }
+return h;
+}
