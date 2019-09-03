@@ -1,0 +1,89 @@
+/*
+Given a Binary Tree of size N, your task is to complete the function isSymettric(), that check whether a binary is Symmetric or not, 
+i.e. the binary tree is Mirror image of itself or not.
+For example:
+The following binary tree is symmetric:
+
+        1
+      /   \
+    2       2
+  /   \   /   \
+ 3     4 4     3
+
+But the following is not:
+
+       1
+     /   \
+    2      2
+     \      \
+      3      3
+Input:
+
+The function takes a single argument as input, the root node of the binary tree. There will be T test cases and for each test case the
+function will be called separately. 
+ 
+
+Output:
+For each testcase the function should return a boolean value.
+
+Constraints:
+1<=T<=100
+1<=N<=100
+
+Example:
+Input:
+3
+1 1
+1 2 L 1 2 R 0
+2 1
+10 20 R 10 20 L 20 30 R 5
+2 2
+10 20 R 10 20 L 10 20 R 10 20 L 20 30 L 100 
+
+Output:
+True
+False
+True
+
+Explanation:
+TestCase 1:
+
+             0
+           /   \
+          1     1
+         /       \
+        2         2
+Tree is mirror image of itself i.e. tree is symmetric
+
+TestCase 2:
+
+             5
+          /    \
+        10      20
+      /    \      \
+    20     20      30 
+Tree is not mirror image of itself i.e. tree is not symmetric
+
+TestCase 3:
+
+              100
+            /     \
+          10       10
+         /   \    /   \
+       20     20 20    20
+Tree is mirror image of itself i.e. tree is symmetric
+*/
+
+bool isIdentical(Node *r1, Node *r2)
+{
+    if(r1==NULL && r2==NULL) return true;
+    if(r1==NULL || r2==NULL) return false;
+    return ( r1->key == r2->key  && isIdentical(r1->left , r2->right) 
+         && isIdentical(r1->right, r2->left));
+}
+
+bool isSymmetric(struct Node* root)
+{
+	if(root) return isIdentical(root->left, root->right);
+	
+}
