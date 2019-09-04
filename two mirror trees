@@ -1,0 +1,42 @@
+/*
+Given a Two Binary Trees, write a function that returns true if one is mirror of other, else returns false.
+
+
+MirrorTree1            
+
+Input:
+The task is to complete the method that takes two arguments, roots of two Binary Trees to be checked for mirror.
+
+Output:
+The function should return true if first tree is mirror of second.
+
+Constraints:
+1 <=T<= 30
+1 <= Number of nodes<= 100
+1 <= Data of a node<= 1000
+
+Example:
+Input:
+2
+2 2
+1 2 R 1 3 L
+1 3 R 1 2 L
+4 4
+10 20 L 10 30 R 20 40 L 20 60 R
+10 20 L 10 30 R 20 40 L 20 60 R
+
+Output:
+1
+0
+*/
+
+int areMirror(Node* a, Node* b)
+{
+    if(a==NULL && b==NULL) return 1;
+    if(a==NULL || b==NULL) return 0;
+    else
+    {
+        return (areMirror(a->left , b->right) 
+        && areMirror(a->right, b->left) && a->data==b->data);
+    }
+}
