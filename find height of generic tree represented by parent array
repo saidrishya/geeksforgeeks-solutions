@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int height(int a[], int n){
+    int curr_height, max_height=-1,i,j;
+    for(i=0; i<n; i++){
+        curr_height=0; j=i;
+        while(a[j]!=-1)
+        {
+            curr_height++;
+            j=a[j];
+        }
+        if(curr_height > max_height)
+           max_height = curr_height;
+    }
+return max_height;
+}
+
+
+
+
+int main()
+{
+   int a[9] = {-1, 0, 1,6,6,0,0,2,7};
+   cout<<height(a,9);
+    return 0;
+}
