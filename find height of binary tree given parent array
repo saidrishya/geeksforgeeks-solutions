@@ -1,0 +1,39 @@
+/*
+the parent array is given where index is the node and its value denotes the parent node. the value of parent[0] i.e root is always -1
+*/
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+//find height of binary tree guven parent aarray
+void fillDepth(int a[], int i, int depth[]){
+    if(depth[i]) //if already filled
+      return;
+    if(a[i] == -1) 
+      {
+          depth[i]=1;
+          return;
+      }
+      //if parent is not filled
+    if(depth[a[i]] == 0)
+      fillDepth(a,a[i],depth);
+      //depth of child is depth of parent + 1
+    depth[i] = depth[a[i]] + 1;
+}
+
+
+int height(int a[], int n){
+    int depth[n]={0};
+    for(int i=0; i<n; i++)
+      fillDepth(a,i,depth);
+return (*max_element(depth,depth+n));
+}
+
+
+int main()
+{
+   int a[9] = {-1, 0, 1,6,6,0,0,2,7};
+   cout<<height(a,9);
+    return 0;
+}
