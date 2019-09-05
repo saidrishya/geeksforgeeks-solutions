@@ -1,0 +1,39 @@
+/*
+Write a function to detect if two trees are isomorphic. Two trees are called isomorphic if one of them can be obtained from other by a 
+series of flips, i.e. by swapping left and right children of a number of nodes. Any number of nodes at any level can have their children 
+swapped. Two empty trees are isomorphic.
+
+Input:
+First line consists of T test cases. First line of every test case consists of N, denoting number of Node in tree. Second and third line 
+of every test case consists of N, nodes of binary tree.
+
+Output:
+Single line output, return the boolean value true if "Yes" else "No".
+
+Constraints:
+1<=T<=100
+1<=N<=100
+
+Example:
+Input:
+2
+3
+1 2 L 1 3 R 2 4 L
+1 3 L 1 2 R 3 4 R
+3
+1 2 L 1 3 R 2 4 L
+1 3 L 1 2 R 2 4 R
+Output:
+No
+Yes
+*/
+
+bool isIsomorphic(Node *root1,Node *root2)
+{
+   if(!root1 && !root2) return true;
+   if(!root1 || !root2) return false;
+   if(root1->data != root2->data) return false;
+   return 
+ (isIsomorphic(root1->left,root2->left) && isIsomorphic(root1->right,root2->right))|| 
+ (isIsomorphic(root1->left,root2->right) && isIsomorphic(root1->right,root2->left)); 
+}
