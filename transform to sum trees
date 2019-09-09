@@ -1,0 +1,75 @@
+/*
+Given a Binary Tree where each node has positive and negative values. Convert this to a tree where each node contains the sum of the
+left and right sub trees in the original tree. The values of leaf nodes are changed to 0.
+
+For example, the following tree
+
+             10
+          /      \
+        -2        6
+       /   \     /  \
+     8     -4   7    5
+
+should be changed to
+
+       20(4-2+12+6)
+          /              \
+     4(8-4)      12(7+5)
+       /   \           /  \
+     0      0       0    0
+
+ 
+
+Input:
+
+The task is to complete the method which takes one argument, root of Binary Tree. There are multiple test cases. For each test case, 
+this method will be called individually.
+
+Output:
+The function convert the passed tree to its sum tree.  
+
+Constraints:
+1 <=T<= 30
+1 <=Number of nodes<= 100
+1 <=Data of a node<= 1000
+
+Example:
+Input:
+2
+2
+3 1 L 3 2 R
+4
+10 20 L 10 30 R 20 40 L 20 60 R
+
+Output:
+
+0 3 0 
+0 100 0 150 0
+
+The output in this sample test case is Inorder traversal of modified tree.
+
+There are two test casess.  First case represents a tree with 3 nodes and 2 edges where root is 3, left child of 3 is 1 and right child 
+of 3 is 2.   Second test case represents a tree with 4 edges and 5 nodes.
+*/
+
+
+int sum(Node *node){
+    if(!node) return 0;
+    if(node->left == NULL && node->right==NULL) 
+      {
+          int d=node->data;
+          node->data=0;
+          return d;
+      }
+     int l = sum(node->left);
+     int r = sum(node->right);
+     int sum=l+r+node->data;
+     node->data = l+r;
+     return sum;
+}
+
+
+void toSumTree(Node *node)
+{
+   sum(node);
+}
