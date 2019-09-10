@@ -1,0 +1,62 @@
+/*
+A n digit number has n*(n+1)/2 sub-numbers.  For example, all possible sub-numbers of 975 are 9 7 5 97 75 975. A number is called Lucky if 
+all sub-numbers have different digit product.  Digit product of a number is product of its digits.  
+
+For example, the number 23 is Lucky.  Subsequences of it are 2, 3 and 23 and digit products are 2, 3 and 6 respectively (All digit products
+are different). 975 is also lucky.
+
+ 
+
+Input:
+
+The first line contains an integer T, depicting total number of test cases. 
+Then following T lines contains an integer N .
+Output:
+
+Print 1 if number is lucky else print 0.
+
+Constraints:
+
+1<=T<=100
+
+1<=N<=1010
+Example:
+
+Input:
+
+2
+324
+323
+
+Output:
+
+1
+0
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
+bool isLucky(string s){
+    set<int> m;
+    for(int i=0; i<s.size(); i++){
+        int prod=1;
+        for(int j=i; j<s.size(); j++){
+           prod = prod * (s[j]-'0');
+           if(m.find(prod) != m.end()) return false;
+           else m.insert(prod);
+        }
+    }
+return true;
+}
+
+
+int main() {
+	int t; cin>>t; while(t--){
+	    string s; cin>>s;
+	    cout<<isLucky(s)<<'\n';
+	}
+	return 0;
+}
