@@ -1,0 +1,55 @@
+/*
+You will be given two positive integers N and K. You have to find the Kth smallest factor of N. A factor of N is a positive integer which 
+divides N.
+ 
+
+Input : 
+The first line of input contains an integer T denoting the number of test cases. Then T test cases follow. Each test case consists of two 
+space separated positive integers which denote N and K.
+ 
+
+Output : 
+For each test case in a new line print the Kth smallest factor of N if it exists otherwise print -1.
+ 
+
+Constraints:
+1 ≤ T ≤ 100
+1 ≤ N ≤ 1015
+1 ≤ K ≤ 1011
+ 
+
+Example : 
+Input : 
+3
+4 2
+4 3
+10 1
+
+Output :
+2
+4
+1
+*/
+
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+int main() {
+	int t; cin>>t; while(t--){
+	    ll n,k; cin>>n>>k;
+	    vector<ll> res;
+	    for(ll i=1; i<=sqrt(n); i++){
+	        if(n%i == 0)
+	        {
+	        res.push_back(i);
+	        if(i != sqrt(n))
+	         res.push_back(n/i);
+	        }
+	    }
+	    sort(res.begin(), res.end());
+	   if(k>res.size()) cout<<-1<<'\n';
+	   else cout<<res[k-1]<<'\n';
+	}
+	return 0;
+}
