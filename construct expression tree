@@ -1,0 +1,55 @@
+/*
+Given a postfix expression.Your task is to complete the method constructTree().The output of the program will print the infix expression of
+the given postfix expression.
+
+Input:
+The constructTree() function takes a single argument as input,character array containg the given postfix expression.
+Output:
+Infix expression should be printed for each given postfix expression.
+Constraints:
+1<=T<=50
+1<=length_of_expression<=20
+Example:
+Input:
+2
+ab+ef*g*-
+wlrb+-*
+Output:
+a + b - e * f * g
+w * l - r + b
+*/
+
+et* constructTree(char postfix[])
+{
+stack<et *> st; 
+    et *t, *t1, *t2; 
+  
+    
+    for (int i=0; i<strlen(postfix); i++) 
+    { 
+        if (!isOperator(postfix[i])) 
+        { 
+            t = newNode(postfix[i]); 
+            st.push(t); 
+        } 
+        else  
+        { 
+            t = newNode(postfix[i]); 
+  
+            t1 = st.top(); 
+            st.pop();       
+            t2 = st.top(); 
+            st.pop(); 
+  
+            
+            t->right = t1; 
+            t->left = t2; 
+  
+            st.push(t); 
+        } 
+    } 
+    t = st.top(); 
+    st.pop(); 
+  
+    return t; 
+}
