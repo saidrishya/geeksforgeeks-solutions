@@ -1,0 +1,65 @@
+/*
+Given a binary tree, check if the tree can be folded or not. A tree can be folded if left and right subtrees of the tree are structure 
+wise same. An empty tree is considered as foldable.
+
+Consider the below trees:
+(a) and (b) can be folded.
+(c) and (d) cannot be folded.
+
+(a)
+       10
+     /    \
+    7      15
+     \    /
+      9  11
+(b)
+        10
+       /  \
+      7    15
+     /      \
+    9       11
+(c)
+        10
+       /  \
+      7   15
+     /    /
+    5   11
+(d)
+         10
+       /   \
+      7     15
+    /  \    /
+   9   10  12
+Input:
+First line of input contains number of testcases T. For each testcase, there will be two lines, first of which containing the number of 
+edges (between two nodes) in the tree. Next line contains N pairs (considering a and b) with a 'L' (means node b on left of a) or 'R'
+(means node b on right of a) after a and b.
+
+Output Format:
+Print "Yes" (without quotes) if the tree is foldable and "No" ( without quotes) if it is unfoldable.
+*/
+
+bool foldutil(node* r1,node* r2)
+{
+    if(r1==NULL&& r2== NULL) 
+      return true;
+    if(r1==NULL || r2==NULL)
+       return false;
+    if((r1->left==NULL && r1->right==NULL) && 
+          (r2->left==NULL && r2->right==NULL))
+        return true;
+    if((r1->left && r2->right) || (r1->right && r2->left))  
+       {
+       if(foldutil(r1->left,r2->right) && foldutil(r1->right,r2->left)) 
+         return true;
+        }
+    else return false;
+}
+
+
+bool isFoldable(struct node *root)
+{
+if(root==NULL)
+return true;
+return foldutil(root->left,root->right);
+}
