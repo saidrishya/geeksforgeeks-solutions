@@ -1,0 +1,38 @@
+/*
+Given an integer N, remove consecutive repeated digits from it.
+
+Input:
+The first line of input contains an integer T denoting the number of test cases. Then T test cases follow. The first line of each test 
+case contains the integer N.
+
+Output:
+Print the number after removing consecutive digits. Print the answer for each test case in a new line.
+
+
+Constraints:
+1<= T <=100
+1<= N <=1018
+
+
+Example:
+Input:
+1
+12224
+Output:
+124
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t; cin>>t; while(t--){
+	    string s; cin>>s;
+	    for(int i=0; i<s.size(); i++){
+	        if(s[i] == s[i+1]) continue;
+	        else cout<<s[i];
+	    }
+	   cout<<'\n';
+	}
+	return 0;
+}
