@@ -1,0 +1,67 @@
+/*
+Given two arrays and a number x, find the pair whose sum is closest to x and the pair has an element from each array.
+
+Input:
+The first line consists of a single integer T, the number of test cases. For each test case, the first line contains 2 integers n & m 
+denoting the size of two arrays. Next line contains n- space separated integers denoting the elements of array A and next lines contains m
+space separated integers denoting the elements of array B followed by an integer x denoting the number whose closest sum is to find.
+
+Output:
+For each test case, the output is 2 space separated integers whose sum is closest to x.  
+
+Constraints:
+1<=T<=100
+1<=n,m<=50
+1<=A[i],B[i]<=500
+
+Example:
+Input:
+2
+4 4
+1 4 5 7
+10 20 30 40
+32
+4 4
+1 4 5 7
+10 20 30 40
+50
+Output: 
+1 30
+7 40
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int m,n,x; cin>>m>>n;
+	    int a[m],b[n];
+	    for(int i=0; i<m; i++) cin>>a[i];
+	    for(int j=0; j<n; j++) cin>>b[j];
+	    cin>>x;
+	    sort(a,a+m);
+	    sort(b,b+n);
+	    int i=0,j=n-1,p,q,diff=INT_MAX;
+	    while(i<m && j>=0){
+	       
+	       
+	       if (abs(a[i] + b[j] - x) < diff) 
+           { 
+           p = i; 
+           q = j; 
+           diff = abs(a[i] + b[j] - x); 
+           }  
+  
+       
+       if (a[i] + b[j] > x) 
+           j--; 
+       else   
+           i++; 
+	       
+	       
+	    }
+	    cout<<a[p]<<" "<<b[q]<<'\n';
+	}
+	return 0;
+}
