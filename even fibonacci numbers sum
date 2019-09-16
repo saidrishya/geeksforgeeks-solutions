@@ -1,0 +1,57 @@
+/*
+Given a number N find the sum of all the even valued terms in the fibonacci sequence less than or equal to N.
+The first few terms of Fibonacci Numbers are, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233 ,… (Even numbers are highlighted).
+
+Input:
+The first line of input contains an integer T denoting the number of test cases. Then T test cases follow. The first line of each test case
+contains the integer N.
+
+Output:
+Print the sum of all the even valued terms in the fibonacci sequence less than or equal to given N. Print the answer for each test case in
+a new line.
+
+Constraints:
+1<= T <=100
+1<= N <=1000000
+
+Example:
+Input:
+2
+8
+400
+
+Output:
+10
+188
+*/
+
+#include <bits/stdc++.h>
+#define ll unsigned long long int
+using namespace std;
+
+ll sumOfEven(ll n)
+{
+    if(n<2) return 0;
+    ll ef1, ef2;
+    ef1=0; ef2=2;
+    ll sum=ef1+ef2;
+    while(ef2<=n){
+        ll ef3 = 4*ef2 + ef1;
+        if(ef3 > n) break;
+         
+         ef1=ef2;
+         ef2=ef3;
+         sum+=ef2;
+    }
+return sum;
+}
+
+int main() {
+	int t; cin>>t; while(t--){
+	    ll n; cin>>n;
+	   // ll sum=0
+	   cout<<sumOfEven(n)<<'\n';
+	    
+	}
+	return 0;
+}
