@@ -1,0 +1,44 @@
+/*
+Given a number N, print the first N fibonacci numbers.
+
+Input:
+The first line of input contains an integer T denoting the number of test cases. Then T test cases follow. The first line of each test
+case contains the integer N.
+
+Output:
+Print the first n fibonacci numbers with a space between each number. Print the answer for each test case in a new line.
+
+Constraints:
+1<= T <=100
+1<= N <=84
+
+Example:
+Input:
+2
+7
+5
+
+Output:
+1 1 2 3 5 8 13
+1 1 2 3 5
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int n; cin>>n;
+	    long long int fib[n+1];
+	    fib[0]=fib[1]=1;
+	    if(n>1) cout<<fib[0]<<" "<<fib[1]<<" ";
+	    else cout<<1;
+	    for(int i=2; i<n; i++)
+	      {
+	          fib[i] = fib[i-1] + fib[i-2];
+	          cout<<fib[i]<<" ";
+	      }
+	      cout<<'\n';
+	}
+	return 0;
+}
