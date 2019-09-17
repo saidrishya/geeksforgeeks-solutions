@@ -1,0 +1,73 @@
+/*
+Given a binary tree, your task is to complete the function findRightSibling(), that should return the right sibling to a given node if
+it doesn’t exist return null.
+
+Structure of the node of the binary tree is as
+struct Node
+{
+    int data;
+    Node* left;
+    Node* right;
+    Node* parent;
+};
+Examples:
+
+             1
+            / \
+           2   3
+          /  \  \
+         4    6  5
+        /      \  \
+       7        9  8
+       /         \
+      10         12
+Input : Given above tree with parent pointer and node 10
+Output : 12
+Input:
+The function takes a single argument as input, the reference pointer to the node whose right sibling is to be found in the provided 
+binary tree.
+There will be T, test cases and for each test case, the function will be called separately.
+
+Output:
+For each test case return the pointer to the right sibling of a given node.
+
+Constraints:
+1<=T<=100
+1<=N<=100
+
+Example:
+Input:
+2
+10
+1 2 L 1 3 R 2 4 L 2 6 R 4 7 L 7 10 L 6 9 R 9 12 R 3 5 R 5 8 R
+7
+2
+1 2 L 1 3 R
+2
+Output:
+9
+3
+*/
+
+Node* findRightSibling(Node* node)
+{
+    Node* x=node;
+    Node *root=node , *ans;
+    while(node!= NULL){
+        root=node;
+        node=node->parent;
+    }
+    queue<Node *> q; q.push(root);
+    while(!q.empty()){
+        Node *t= q.front();
+        q.pop();
+        if(t == x){
+            ans=q.front();
+            return ans;
+        }
+        if(t->left) q.push(t->left);
+        if(t->right) q.push(t->right);
+        
+    }
+return NULL;
+}
