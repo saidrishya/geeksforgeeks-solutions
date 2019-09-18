@@ -1,0 +1,55 @@
+/*
+Given a string S, containing special characters and all the alphabets, reverse the string without
+affecting the positions of the special characters.
+ 
+
+Input
+The first line of input contains an integer T denoting the number of test cases. Then T test cases
+follow. 
+The first line of each test case contains a case-insensitive string S.
+
+
+Output
+Print out the reversed string without  affecting special characters.
+
+
+Constraints
+1 <= T <= 100
+0 <   S  <= 100
+
+ 
+
+Examples 
+
+Input
+3
+A&B
+abc%sld*
+dakA&*hA@#N
+
+Output
+B&A
+dls%cba*
+NAhA&*ka@#d
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t; cin>>t; while(t--){
+	    string s; cin>>s;
+	    int l=0, h=s.size()-1;
+	    while(l<h){
+	        if(isalpha(s[l]) && isalpha(s[h])){
+	            swap(s[l], s[h]);
+	            l++;
+	            h--;
+	        }
+	        else if(isalpha(s[l])) h--;
+	        else l++;
+	    }
+	    cout<<s<<'\n';
+	}
+	return 0;
+}
