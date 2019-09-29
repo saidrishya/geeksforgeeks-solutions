@@ -1,0 +1,50 @@
+/*
+Given two strings a and b. The task is to find if a string 'a' can be obtained by rotating another string 'b' by 2 places.
+
+Input:
+The first line of input contains an integer T denoting the no of test cases. Then T test cases follow. In the next two line are two string
+a and b.
+
+Output:
+For each test case in a new line print 1 if the string 'a' can be obtained by rotating string 'b' by two places else print 0.
+
+Constraints:
+1 <= T <= 50
+1 <= length of a, b < 100
+
+Example:
+Input:
+2
+amazon
+azonam
+geeksforgeeks
+geeksgeeksfor
+
+Output:
+1
+0
+
+Explanation:
+Testcase 1: amazon can be rotated anti-clockwise by two places, which will make it as azonam.
+
+Testcase 2: geeksgeeksfor can't be formed by any rotation from the given word geeksforgeeks.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isRotate(string a, string b){
+    if(a.size() != b.size()) return false;
+    if((a[0] == b[b.size()-2] && a[1] == b[b.size()-1]) ||
+      (b[0] == a[a.size()-2] && b[1]==a[a.size()-1])) return true;
+      else return false;
+}
+
+
+int main() {
+	int t; cin>>t; while(t--){
+	    string a,b; cin>>a>>b;
+	   cout<<isRotate(a,b)<<'\n';
+	}
+	return 0;
+}
