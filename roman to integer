@@ -1,0 +1,49 @@
+/*
+Given an string in roman no format (s)  your task is to convert it to integer .
+
+Input:
+The first line of each test case contains the no of test cases T. Then T test cases follow. Each test case contains a string s denoting 
+the roman no.
+
+Output:
+For each test case in a new line print the integer representation of roman number s. 
+
+Constraints:
+1<=T<=100
+1<=roman no range<4000
+
+Example:
+Input
+2
+V
+III 
+Output
+5
+3
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main() {
+	int t; cin>>t; while(t--){
+	    string s; cin>>s;
+	    unordered_map<char, int>m;
+    m['I']=1;
+    m['V']=5;
+    m['X']=10;
+    m['L']=50;
+    m['C']=100;
+    m['D']=500;
+    m['M']=1000;
+    int ans=0;
+    for(int i=0; i<s.size(); i++){
+        if(m[s[i]] < m[s[i+1]] && i<s.size()-1)
+         ans-=m[s[i]];
+        else ans+=m[s[i]];
+    }
+    cout<<ans<<'\n';
+	}
+	return 0;
+}
