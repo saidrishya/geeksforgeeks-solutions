@@ -1,0 +1,59 @@
+/*
+Given a number n. Print the minimum positive integer by which it should be divided so that the result is an odd number.
+
+Input:
+
+First line of the input will contain the number of test cases. 
+
+Each test case will contain a single integer n
+ 
+
+Output:
+Print the required output.
+
+Constraints:
+
+1 <= T <= 100
+1 <= N <= 100000
+
+Example:
+
+Input: 
+3
+36
+5
+8
+
+Output:
+4
+1
+8
+
+Explanation:
+
+In the first case, 36 must be divided by 4 or 12 to make it odd.
+We take minimum of 4 and 12 i.e. 4
+In the second case, 5 is already odd.
+In the third case, 8 must be divided by 8 to make it an odd number.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int makeOdd(int n){
+    if(n%2 != 0) return  1;
+    int ans=1;
+    while(n>0){
+        n/=2;
+        ans*=2;
+        if(n%2 != 0) return ans;
+    }
+}
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int n; cin>>n;
+	    cout<<makeOdd(n)<<'\n';
+	}
+	return 0;
+}
