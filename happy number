@@ -1,0 +1,75 @@
+/*
+Given a no N your task is to find whether its a happy no or not . A number is called happy if it leads to 1 after a sequence of steps
+where in each step number is replaced by sum of squares of its digit that is if we start with Happy Number and keep replacing it with 
+digits square sum, we reach 1.
+
+For eg:
+
+Input: n = 19
+Output: 1
+19 is Happy Number,
+1^2 + 9^2 = 82
+8^2 + 2^2 = 68
+6^2 + 8^2 = 100
+1^2 + 0^2 + 0^2 = 1
+As we reached to 1, 19 is a Happy Number.
+
+Input: n = 20
+Output: 0
+
+
+Input:
+The first line of input contains an integer T denoting the no of test cases. Then T test cases follow . The first line of each test case 
+contains an integer N.
+
+Output:
+For each test case in a new line print 1 if the no is a happy else print 0.
+
+Constraints:
+1<=T<=100
+1<=N<=1000
+
+Example:
+Input
+2
+19
+20
+Output
+1
+0
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int sumOfSquares(int n){
+    int sum=0;
+    while(n>0){
+        int r = n%10;
+        sum = sum +  (r*r);
+        n/=10;
+    }
+return sum;
+}
+
+
+bool isHappy(int n){
+    unordered_set<int> m;
+    while(true){
+       int k = sumOfSquares(n);
+     //   cout<<n<<'\n';
+        if(k==1) return true;
+        if(m.find(k) != m.end()) return false;
+        else m.insert(k);
+        n=k;
+    }
+}
+
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int n; cin>>n;
+	    cout<<isHappy(n)<<'\n';
+	}
+	return 0;
+}
