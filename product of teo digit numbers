@@ -1,0 +1,58 @@
+/*
+Sharad  is fond of Mathematics and thought of playing with it. He assumes an even digit number, then partition the number into multiple 
+numbers of two digits. For ex: if he chooses 1345 then he parts the number into 13 and 45. Now, he wants to calculate the product of these
+two digit numbers. The product for the above example is 585. He challenges you to do this work through a program. 
+
+Input:.
+First line of the input contains an integer T denoting the number of test cases. Then T test cases follow. Each test case consists of a 
+single line containing an even digit number N.
+
+Output:
+Corresponding to each test case, in a new line, print the desired output modulo 10^9 + 7
+
+Constraints: 
+1 ≤ T ≤ 100
+1 ≤ N ≤ 10^20
+
+
+Example:
+
+Input:
+3
+2222
+11
+1010
+
+Output:
+484
+11
+100
+
+Example: In first case 2222 it can be divided into 22 and 22..so the result is 484
+
+                  In Second case 11 it can divide into only 11 so our result is 11
+                  In third case 1010 it can be divided into 10 and 10 .. so outcome is 100
+*/
+#include <bits/stdc++.h>
+using namespace std;
+
+string prodTwoDigit(string s){
+    if(s.size()<2) return s;
+    long long int prod=1;
+    for(int i=0; i<s.size(); i=i+2){
+        int t = (s[i]-'0')*10 + (s[i+1]-'0');
+        //cout<<t<<" ";
+        prod = (prod * t)%1000000007;
+       // cout<<prod<<" ";
+    }
+    string res = to_string(prod);
+return res;
+}
+
+int main() {
+	int t; cin>>t; while(t--){
+	    string s; cin>>s;
+	    cout<<prodTwoDigit(s)<<'\n';
+	}
+	return 0;
+}
