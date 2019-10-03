@@ -1,0 +1,56 @@
+/*
+Given an integer array A of N elements. You need to find the sum of two elements such that sum is closest to zero.
+
+Input:
+The first line of input contains an integer T denoting the number of test cases.  
+The first line of each test case is N, denoting the size of array. Each test case consist of a N integers which are the array elements.
+
+Output:
+Print the requiired sum which is closest to zero.
+
+Constraints:
+1 ≤ T ≤ 100
+1 ≤ N ≤ 103
+-106 ≤ a[i] ≤ 106
+
+Example:
+Input:
+3
+3
+-8 -66 -60  
+6
+-21 -67 -37 -18 4 -65  
+2
+-24 -73
+
+Output:
+-68
+-14
+-97
+
+Explanation:
+Testcase 1: Sum of two elements closest to zero is -68 using numbers -60 and -8.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int n; cin>>n;
+	    int a[n]; for(int i=0; i<n; i++) cin>>a[i];
+	    sort(a,a+n);
+	    int sum=0, minsum=INT_MAX,l=0,r=n-1;
+	    while(l<r)
+	    {
+	        sum = a[l]+a[r];
+	        if(abs(sum) < abs(minsum)){
+	            minsum=sum;
+	        }
+	        if(sum<0) l++;
+	        else r--;
+	    }
+	    cout<<minsum<<'\n';
+	}
+	return 0;
+}
