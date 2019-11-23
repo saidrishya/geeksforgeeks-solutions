@@ -1,0 +1,54 @@
+/*
+A Fox is looking to collect some coins placed in a line. The fox is very greedy and follows an unusual way of collecting coins. The Fox
+has decided that it will collect coins in an increasing order only since she always craves for more money and all the coins must be
+contiguous. It wants to maximize the amount of money it collects. Each coin has its value printed on it.  
+Unfortunately, the Fox is greedy but not intelligent enough to find the solution and asks you for help. Print the maximum amount of money 
+it will take home. You are given the value of each coin in an array in the order in which the coins are placed.
+
+Input:
+The first line of input contains an integer T denoting the number of test cases. Each test case contains the number of elements in the 
+array a[] as n and next line contains space separated n elements in the array.
+
+Output:
+Print an integer which is the required answer.
+
+Constraints:
+1<=T<=100
+1<=n<=1000
+1<=a[i]<=100000
+
+Example:
+Input:
+2
+6
+2 1 4 7 3 6
+5
+38 7 8 10 12
+
+Output:
+12
+38
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+//largest sum contiguous increasing subarray
+int main() {
+	int t; cin>>t; while(t--){
+	    int n,ans=-1; cin>>n;
+	    int a[n]; for(int i=0; i<n; i++) cin>>a[i];
+	    
+	    for(int i=0; i<n; i++){
+	         int curr=a[i];
+	         while(i+1 < n && a[i+1]>a[i]){
+	             curr+=a[i+1];
+	             i++;
+	         }
+	         ans = max(curr, ans);
+	    }
+	        cout<<ans<<'\n';
+	   
+	}
+	return 0;
+}
