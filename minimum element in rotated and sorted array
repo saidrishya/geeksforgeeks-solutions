@@ -1,0 +1,60 @@
+/*
+A sorted array A[ ] with distinct elements is rotated at some unknown point, the task is to find the minimum element in it.
+
+Expected Time Complexity: O(Log n)
+
+Input:
+
+The first line of input contains a single integer T denoting the number of test cases. Then T test cases follow. Each test case consist of
+two lines. The first line of each test case consists of an integer N, where N is the size of array.
+The second line of each test case contains N space separated integers denoting array elements.
+
+Output:
+Corresponding to each test case, in a new line, print the minimum element in the array.
+
+Constraints:
+
+1 ≤ T ≤ 200
+1 ≤ N ≤ 500
+1 ≤ A[i] ≤ 1000
+
+Example:
+
+Input
+2
+5
+4 5 1 2 3
+6
+10 20 30 40 50 5 7
+
+Output
+1
+5
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int findMin(int a[], int l, int h){
+    if(a[l] < a[h]) return a[l];
+    if(a[l] == a[h]) return a[l];
+    int m = l+(h-l)/2;
+    if(m<h && a[m+1] < a[m]) return a[m+1];
+    if(m>l && a[m-1] > a[m]) return a[m];
+     if (a[h] > a[m])  
+    return findMin(a, l, m - 1);  
+    return findMin(a, m + 1, h);  
+}
+
+
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int n; cin>>n; int a[n];
+	    for(int i=0; i<n; i++){
+	        cin>>a[i];
+	    }
+	    cout<<findMin(a,0,n-1)<<'\n';
+	}
+	return 0;
+}
