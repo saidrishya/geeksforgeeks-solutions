@@ -1,0 +1,49 @@
+/*
+Given an array of integers and a number k, write a function that returns true if given array can be divided into pairs such that sum of every pair is divisible by k.
+
+Input:
+The first line of input contains an integer T denoting the number of test cases. The T test cases follow. Each test case contains an integer n denoting the size of the array. The next line contains the n space separated integers forming the array. The last line contains the value of k.
+
+Output:
+Print "True" (without quotes) if given array can be divided into pairs such that sum of every pair is divisible by k or else "False" (without quotes).
+
+Constraints:
+1<=T<=100
+2<=n<=10^5
+1<=a[i]<=10^5
+1<=k<=10^5
+
+Example:
+Input:
+2
+4
+9 7 5 3
+6
+4
+91 74 66 48
+10
+
+Output:
+True
+False
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void isPairSumDivisibility(int s, int n, int k){
+    if(s%k ==0 && n%2 ==0) cout<<"True\n";
+    else cout<<"False\n";
+}
+int main() {
+    int t; cin>>t; while(t--){
+        int n,k,s=0; cin>>n; int a[n]; 
+        for(int i=0; i<n; i++) {
+            cin>>a[i];
+            s=s+a[i];
+        }
+        cin>>k;
+        isPairSumDivisibility(s,n,k);
+    }
+	return 0;
+}
