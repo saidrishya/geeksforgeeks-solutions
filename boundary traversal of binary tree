@@ -1,0 +1,115 @@
+/*
+Write a function to print Boundary Traversal of a binary tree. Boundary Traversal of a binary tree here means that you have to print
+boundary nodes of the binary tree Anti-Clockwise starting from the root.
+Note: Boundary node means nodes present at boundary of leftSubtree and nodes present at rightSubtree also including leaf nodes.
+For below tree, function should print 20 8 4 10 14 25 22 .
+    
+                         
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+Input:
+The input contains T, denoting the number of testcases. The task is to complete the method which takes one argument, root of the tree. 
+The struct node has a data part which stores the data, pointer to left child and pointer to right child. There are multiple test cases.
+For each test case, this method will be called individually.
+
+Output:
+The function should print Boundary traversal of the tree.
+
+Constraints:
+1 <=T<= 30
+1 <=Number of nodes<= 100
+1 <=Data of a node<= 1000
+
+Example:
+Input:
+2
+2
+1 2 R 1 3 L
+7
+20 8 L 20 22 R 8 4 L 8 12 R 12 10 L 12 14 R 22 25 R
+
+Output:
+1 3 2
+20 8 4 10 14 25 22 .
+
+Explanation:
+Testcase 1:
+
+
+The first testcase represents a tree with 3 nodes and 2 edges where root is 1, left child of 1 is 3 and right child of 1 is 2.
+And boundary traversal of this tree prints nodes as 1 3 2.
+*/
+
+void printLeft(Node *root){
+    if(!root) 
+     return;
+    if(root->left){
+         cout<<root->data<<" ";
+        printLeft(root->left);
+    }
+    else if(root->right){
+        cout<<root->data<<" ";
+        printLeft(root->right);
+    }
+}
+
+void printLeaf(Node *root){
+    if(root==NULL) 
+     return;
+    printLeaf(root->left);
+     if(root->left==NULL && root->right==NULL){
+        cout<<root->data<<" ";
+    }
+    printLeaf(root->right);
+}
+
+void printRight(Node *root){
+     if(!root) 
+      return;
+    if(root->right){
+        printRight(root->right);
+          cout<<root->data<<" ";
+    }
+    else if(root->left){
+        printRight(root->left);
+         cout<<root->data<<" ";
+    }
+}
+
+
+
+void printBoundary(Node *root)
+{
+    if(!root) return;
+    cout<<root->data<<" ";
+     printLeft(root->left);
+     printLeaf(root);
+     printRight(root->right);
+}
