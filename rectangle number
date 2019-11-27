@@ -1,0 +1,46 @@
+/*
+We are given a N*M grid, print the number of rectangles in it.
+
+Examples:
+
+Input  : N = 2, M = 2
+Output : 9
+There are 4 rectangles of size 1 x 1.
+There are 2 rectangles of size 1 x 2
+There are 2 rectangles of size 2 x 1
+There is  1 rectangle of size 2 X 2.
+
+Input  : N = 5, M = 4
+Output : 150
+Example : 
+Input : 
+The first line of input contains an integer T denoting the Test cases. Then T test cases follow. 
+Second line contains N and M 
+
+Output : 
+Number of Rectangles. 
+
+Constraints :
+1 ≤ T ≤ 100
+1 ≤ N M ≤ 100
+Input : 
+2
+2 2 
+5 4
+
+Output : 
+9
+150 
+*/
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int n,m; cin>>n>>m;
+	    long long ans = ((n+1)*(m+1)*n*m)/4;
+	    cout<<ans<<'\n';
+	}
+	return 0;
+}
