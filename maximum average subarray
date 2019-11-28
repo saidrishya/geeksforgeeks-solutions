@@ -1,0 +1,87 @@
+/*
+Given an array A[ ]  and a positive integer K, find the sub-array of length K with the maximum average. 
+eg for A[] = {1, 12, -5, -6, 50, 3}, k = 4
+Maximum average sub-array of length 4 begins at index 1.
+Maximum average is (12 - 5 - 6 + 50)/4 = 51
+
+Input
+The first line of input contains an integer T denoting the number of test cases. Then T test cases
+follow. 
+The first line of each test case contains a positive integer K, denoting the length of the sub-array.
+The second line of each test case contains a positive integer N, denoting the length of the array.
+The third line of each test case will contain N space seprated integers denoting the elements of the
+array.
+
+Output
+Print out the maximum average sub-array.
+
+
+Constraints
+1 <= T <= 100
+0 <   N <= 30
+-500 <=  A[i] <= 500
+
+Examples 
+
+Input
+3
+2
+5
+10 4 5 15 20
+2
+4
+-12 34 56 7
+3
+7
+3 -435 335 10 -50 100 20
+
+
+Output
+15 20
+34 56
+335 10 -50
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void maxAvg(int a[], int k, int n){
+    if(k>n) return ;
+    int csum[n];
+    csum[0]=a[0];
+    for(int i=1; i<n; i++){
+        csum[i] = csum[i-1] + a[i];
+    }
+    int max_sum = csum[k-1],start=0, end=k-1;
+    for(int i=k ;i<n; i++){
+        int x = csum[i] - csum[i-k];
+        if(x > max_sum){
+            end = i;
+           // start = i-k-1;
+            max_sum=x;
+        }
+    }
+    start=end-k+1;
+    for(int i=start; i<=end; i++) cout<<a[i]<<" ";
+    cout<<'\n';
+}
+
+
+
+
+
+int main() {
+	//code
+	int t;
+	cin>>t;
+	while(t--){
+	    int k,n;
+	    cin>>k>>n;
+	    int a[n];
+	    for(int i=0;i<n;i++){
+	        cin>>a[i];
+	    }
+	    maxAvg(a,k,n);
+	}
+	return 0;
+}
